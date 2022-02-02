@@ -12,4 +12,20 @@ pip install -r requirements.txt
  conda activate spark64
  python execute.py
  ```
+ 
+ Papermill will automatically compile the notebooks, and the outputs can be directly observed in the /notebooks folder. 
+ 
+ -- notebooks --
+ 1. Preprocess the data - preprocess.ipynb
+ 2. Fit the data to a model - RandomForestCV.ipynb
+ 3. ""... MLP model" - mlp.ipynb
+ 4. Evaluate results - process_results.ipynb
+ 
+ This workflow will run automatically via papermill. 
+ 
+ -- results--
+ This will contain the output benchmarking results from the notebooks.
+ 
+ -- src --
+ This contains the preprocessing function used for assembling the training and testing data. 
 

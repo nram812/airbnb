@@ -1,19 +1,29 @@
 import pandas as pd
 import numpy as np
 def create_training_dataset(categorical, regression, price, index, regression_columns, norm_reg = True):
+    """
+    categorical data preprocessed
+    index: training, test and validation dataframe
+    regression data preprocessed
+    regression columns used
+    normalize the data
+    """
     X = pd.concat([categorical, regression, price], axis =1)
     X_train = X[index['dset'] == 'train'].dropna()
+    # compute the training and testing dataset mean
     X_train_regression_mean = X_train[regression_columns].mean()
     X_train_regression_std = X_train[regression_columns].std()
 
     
     X_test = X[index['dset'] == 'test'].dropna()
-    
+    # remove nan values in the training data - note this means the amount of training
+    # /testing data is reduced.
 
     
     X_val = X[index['dset'] == 'validation'].dropna()
     # normalize relative to the output
     if norm_reg:
+        # note the testing and validation are normalized relative to the training dataset mean and std
         X_val[regression_columns] = ( X_val[regression_columns] - X_train_regression_mean)/ X_train_regression_std
         X_test[regression_columns] = (X_test[regression_columns] - X_train_regression_mean)/ X_train_regression_std
         X_train[regression_columns] = (X_train[regression_columns] - X_train_regression_mean)/ X_train_regression_std
@@ -26,6 +36,9 @@ def create_training_dataset(categorical, regression, price, index, regression_co
             X_train["log_price"], X_test["log_price"], X_val["log_price"]
     
 def eval_metrics(x, y, model):
+    """
+    quick and dirty validation metrics for the model. 
+    """
     y_pred_df = pd.DataFrame(y.copy())
     y = y.values.flatten()
     
