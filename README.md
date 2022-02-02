@@ -14,6 +14,7 @@ pip install -r requirements.txt
  ```
  
  Papermill will automatically compile the notebooks, and the outputs can be directly observed in the /notebooks folder. 
+I've written several notebooks to analyse the data, but the workflow goes as follows:
  
  -- notebooks --
  1. Preprocess the data - preprocess.ipynb
