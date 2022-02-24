@@ -1,4 +1,5 @@
-## Spark64 Data Science Challenge
+## Exploratory work with Papermill
+
 
 This repository uses papermill to execute jupyter notebooks. 
 To install this environment from scratch please use the following commands:
